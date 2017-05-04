@@ -41,33 +41,18 @@ EndpointProvider::setEndpoints([ $endpoint ]);
  */
 $profile = DefaultProfile::getProfile('cn-hangzhou', $config['AccessKeyId'], $config['AccessKeySecret']);
 
-/**
- * 输入文件信息
- */
-$input = [
-	'Bucket'   => 'zuren',
-	'Location' => 'oss-cn-hangzhou',
-	'Object'   => 'videos/test/input_demo_01.mp4'
-];
-
-/**
- * 输出文件信息
- */
-$outputs = [
-	[
-		'OutputObject' => 'videos/test/input_demo_01.mp4',
-		'TemplateId'   => 'S00000001-200030', //模板ID
-	]
-];
 
 /**
  * 请求对象
  */
-$request = new SubmitJobsRequest();
-$request->setInput(json_encode($input));
-$request->setOutputBucket('zuren');
-$request->setOutputs(json_encode($outputs));
-$request->setPipelineId('81029d8fb1724902a4f7a421f509e153'); //管道ID
+$request = new SingleSendMailRequest();
+$request->setAccountName('notice@push.example.com');
+$request->setFromAlias('Pusher');
+$request->setAddressType(1);
+$request->setReplyToAddress('true');
+$request->setToAddress('to@example.com');
+$request->setSubject('Demo Subject');
+$request->setHtmlBody('Hello World!');
 
 $client  = new DefaultAcsClient($profile);
 $response = $client->getAcsResponse($request);
@@ -75,7 +60,7 @@ $response = $client->getAcsResponse($request);
 var_dump($response);
 ```
 
-[官方文档](https://help.aliyun.com/document_detail/dm/api-reference/trans-ossfile/SubmitJobs.html)
+[官方文档](https://help.aliyun.com/document_detail/29444.html)
 
 
 ## Change log
