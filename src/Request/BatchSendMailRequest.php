@@ -39,6 +39,8 @@ class BatchSendMailRequest extends RpcAcsRequest
 
     private $tagName;
 
+    private $clickTrace;
+
 
     public function __construct()
     {
@@ -147,5 +149,18 @@ class BatchSendMailRequest extends RpcAcsRequest
     {
         $this->tagName                    = $tagName;
         $this->queryParameters["TagName"] = $tagName;
+    }
+
+
+    public function getClickTrace()
+    {
+        return $this->clickTrace;
+    }
+
+
+    public function setClickTrace($clickTrace)
+    {
+        $this->clickTrace                    = $clickTrace;
+        $this->queryParameters["ClickTrace"] = $clickTrace;
     }
 }

@@ -47,6 +47,8 @@ class SingleSendMailRequest extends RpcAcsRequest
 
     private $fromAlias;
 
+    private $clickTrace;
+
 
     public function __construct()
     {
@@ -208,5 +210,18 @@ class SingleSendMailRequest extends RpcAcsRequest
     {
         $this->fromAlias                    = $fromAlias;
         $this->queryParameters["FromAlias"] = $fromAlias;
+    }
+
+
+    public function getClickTrace()
+    {
+        return $this->clickTrace;
+    }
+
+
+    public function setClickTrace($clickTrace)
+    {
+        $this->clickTrace                    = $clickTrace;
+        $this->queryParameters["ClickTrace"] = $clickTrace;
     }
 }
