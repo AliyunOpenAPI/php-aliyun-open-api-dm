@@ -1,0 +1,14 @@
+.DS_Store
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+.env
+.tmp/
+.cache/
+.gitignore
+.idea/
